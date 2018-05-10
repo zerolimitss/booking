@@ -15,6 +15,8 @@ use Yii;
  */
 class Rooms extends \yii\db\ActiveRecord
 {
+    public $name;
+
     /**
      * {@inheritdoc}
      */
@@ -41,8 +43,10 @@ class Rooms extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'photo' => 'Photo',
+            'title' => 'Название',
+            'photo' => 'Фото',
+            'info' => 'Краткое описание',
+            'orders' => 'Список броней по номеру',
         ];
     }
 
@@ -53,4 +57,9 @@ class Rooms extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Orders::className(), ['room_id' => 'id']);
     }
+
+    /*public function getOrdersCount()
+    {
+        return $this->hasMany(Orders::className(), ['room_id' => 'id'])->count();
+    }*/
 }

@@ -47,11 +47,11 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'number' => 'Number',
-            'day' => 'Day',
-            'time' => 'Time',
-            'room_id' => 'Room ID',
+            'name' => 'Имя клиента',
+            'number' => 'Телефон',
+            'day' => 'День, на который бронируется',
+            'time' => 'Время бронирования',
+            'room_id' => 'Номер',
         ];
     }
 
@@ -61,5 +61,12 @@ class Orders extends \yii\db\ActiveRecord
     public function getRoom()
     {
         return $this->hasOne(Rooms::className(), ['id' => 'room_id']);
+    }
+
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->day = date("d-m-Y", strtotime($this->day));
+        $this->time = date("h:i d-m-Y", strtotime($this->time));
     }
 }

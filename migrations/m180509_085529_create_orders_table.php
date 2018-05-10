@@ -20,7 +20,7 @@ class m180509_085529_create_orders_table extends Migration
             'name' => $this->string(),
             'number' => $this->string(),
             'day' => $this->date(),
-            'time' => $this->date(),
+            'time' => $this->dateTime(),
             'room_id' => $this->integer()->notNull(),
         ]);
 

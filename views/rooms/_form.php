@@ -17,7 +17,6 @@ use yii\widgets\ActiveForm;
 
     <?php if(!empty($model->photo)):?>
         <img src="/images/<?=$model->photo?>" alt="" width="200"><br>
-        <a href="<?=Url::to(['rooms/delete-photo'])?>">Удалить</a>
     <?php endif;?>
     <?= $form->field($model, 'photo')->fileInput() ?>
 

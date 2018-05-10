@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => call_user_func(function($data){
                     $s = '';
                     foreach ($data->orders as $order) {
-                        $s .= Html::a($order->name,['rooms/booked', 'id'=>$order->id]) . "<br>";
+                        $s .= $order->name . "<br>";
                     }
                     return $s;
                 },$model),

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Orders;
 use Yii;
 use app\models\Rooms;
 use yii\data\ActiveDataProvider;
@@ -148,5 +149,16 @@ class RoomsController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionList(){
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Orders::find()
+        ]);
+
+        return $this->render('list', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }
