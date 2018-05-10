@@ -19,7 +19,8 @@ class m180509_085529_create_orders_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(),
             'number' => $this->string(),
-            'day' => $this->date(),
+            'checkIn' => $this->dateTime(),
+            'checkOut' => $this->dateTime(),
             'time' => $this->dateTime(),
             'room_id' => $this->integer()->notNull(),
         ]);

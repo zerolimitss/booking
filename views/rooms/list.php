@@ -28,7 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'name',
             'number',
-            'day',
+            'checkIn',
+            'checkOut',
             'time',
             //'info',
 

@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\BookingForm;
+use app\models\Rooms;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -61,7 +64,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Rooms::find()
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
@@ -96,5 +105,17 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionBook($id=false)
+    {
+        $model = new BookingForm();
+        if ($model->load(Yii::$app->request->post()) && $model->book()) {
+            return $this->redirect(['site/index']);
+        }
+        //if(!$id) return $this->redirect(['site/index']);
+        $room = Rooms::find()->where(['id' => $id])->one();
+        $model->room_id = $id;
+        return $this->render('book', compact('model', 'room'));
     }
 }

@@ -7,7 +7,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Номера';
+$this->title = 'Rooms';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rooms-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Rooms', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
