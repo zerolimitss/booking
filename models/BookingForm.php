@@ -74,7 +74,8 @@ class BookingForm extends Model
         return [
             'name' => 'Имя',
             'number' => 'Телефон',
-            'bookingPeriod' => 'Период бронирования',
+            'startPeriod' => 'Дата заезда',
+            'endPeriod' => 'Дата выезда',
         ];
     }
 }
